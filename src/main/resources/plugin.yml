@@ -1,0 +1,12 @@
+name: MordSheets
+version: '${project.version}'
+main: me.billbominecraft.mordsheets.MordSheets
+api-version: 1.19
+authors: [ billbominecraft ]
+description: Minecraft character sheets
+
+commands:
+  roll:
+    description: Roll a random number from 1 to 20
+    usage: /roll [#]
+
