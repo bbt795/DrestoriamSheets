@@ -10,3 +10,7 @@ commands:
     description: Roll a random number from 1 to 20
     usage: /roll [#]
 
+  groll:
+    description: Globally roll a random number 1 to 20
+    usage: /groll [#]
+

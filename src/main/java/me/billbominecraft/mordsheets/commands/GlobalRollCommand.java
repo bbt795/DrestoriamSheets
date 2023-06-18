@@ -1,16 +1,16 @@
 package me.billbominecraft.mordsheets.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Random;
 
-public class RollCommand implements CommandExecutor {
+public class GlobalRollCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -20,7 +20,7 @@ public class RollCommand implements CommandExecutor {
         if(sender instanceof Player){
 
             Player player = (Player) sender;
-            List<Entity> entities = player.getNearbyEntities(20,20,20);
+            List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
 
             Random random = new Random();
             int diceroll = random.nextInt(20) + 1;
@@ -29,11 +29,11 @@ public class RollCommand implements CommandExecutor {
 
                 player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
 
-                for(Entity entity: entities){
+                for(Player onlinePlayers: players){
 
-                    if(entity instanceof Player){
+                    if(onlinePlayers instanceof Player){
 
-                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")!");
+                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")!");
 
                     }
 
@@ -47,11 +47,11 @@ public class RollCommand implements CommandExecutor {
 
                 player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
 
-                for(Entity entity: entities){
+                for(Player onlinePlayers: players){
 
-                    if(entity instanceof Player){
+                    if(onlinePlayers instanceof Player){
 
-                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
 
                     }
 
