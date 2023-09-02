@@ -28,13 +28,13 @@ public class RollCommand implements CommandExecutor {
 
             if(args.length == 0){
 
-                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
 
                 for(Entity entity: entities){
 
                     if(entity instanceof Player){
 
-                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")!");
+                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")!");
 
                     }
 
@@ -46,13 +46,13 @@ public class RollCommand implements CommandExecutor {
                 int total = diceroll + bonus;
 
 
-                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
 
                 for(Entity entity: entities){
 
                     if(entity instanceof Player){
 
-                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
 
                     }
 

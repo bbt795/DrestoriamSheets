@@ -17,3 +17,7 @@ commands:
   cs:
     description: View/edit character sheets
     usage: /cs
+
+  rs:
+    description: View/edit roleplay stats
+    usage: /rs

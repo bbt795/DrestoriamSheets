@@ -98,6 +98,7 @@ public class CharacterSheetCommand implements CommandExecutor {
                     if (args.length > 1) {
 
                         player.sendMessage(tag + ChatColor.RED + "To create your character sheet, please do /cs create");
+                        break;
 
                     }
 
@@ -119,14 +120,20 @@ public class CharacterSheetCommand implements CommandExecutor {
 
                     }
 
+                    if(args[2] == "race" && !(checkRace())){
+
+                        player.sendMessage(tag + ChatColor.RED + "Please select an approved race. If you believe this is an error, please contact an admin+.");
+
+                    }
+
                     StringBuilder value = new StringBuilder();
                     for(int i = 2; i < args.length; i++){
+
+                        value.append(args[i]);
 
                         if(i <= args.length - 1){
                             value.append(" ");
                         }
-
-                        value.append(args[i]);
 
                     }
 
@@ -153,7 +160,7 @@ public class CharacterSheetCommand implements CommandExecutor {
 
     public void printHelp(Player player){
 
-        player.sendMessage(ChatColor.GOLD + "-===--+MordSheets Help+--===-");
+        player.sendMessage(ChatColor.GOLD + "-===--+ MordSheets Help +--===-");
         player.sendMessage(ChatColor.BLUE + "- /cs help");
         player.sendMessage(ChatColor.BLUE + "- /cs inspect (username)");
         player.sendMessage(ChatColor.BLUE + "- /cs me");

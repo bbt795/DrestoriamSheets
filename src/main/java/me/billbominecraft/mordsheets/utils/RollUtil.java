@@ -49,6 +49,16 @@ public class RollUtil {
 
         }
 
+        if(diceroll > 20){
+
+            result = "No Penalty";
+
+        } else if (diceroll < 1){
+
+            result = "Catastrophic Penalty";
+
+        }
+
         return result;
 
     }

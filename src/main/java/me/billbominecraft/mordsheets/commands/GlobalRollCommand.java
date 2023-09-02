@@ -28,13 +28,13 @@ public class GlobalRollCommand implements CommandExecutor {
 
             if(args.length == 0){
 
-                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+                //player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
 
                 for(Player onlinePlayers: players){
 
                     if(onlinePlayers != null){
 
-                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")!");
+                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
 
                     }
 
@@ -46,18 +46,19 @@ public class GlobalRollCommand implements CommandExecutor {
                 int total = diceroll + bonus;
 
 
-                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                //player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")");
 
                 for(Player onlinePlayers: players){
 
                     if(onlinePlayers != null){
 
-                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + "has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")");
 
                     }
 
                 }
 
+                //check if args is an integer
             } else {
 
                 player.sendMessage(tag + ChatColor.RED + "Please enter valid arguments. /roll [#]");

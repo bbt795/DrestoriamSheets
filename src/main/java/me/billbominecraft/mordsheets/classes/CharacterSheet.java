@@ -7,16 +7,16 @@ import java.util.UUID;
 
 public class CharacterSheet {
 
-    private Player player;
-    private UUID playerID = player.getUniqueId();
+    private transient Player player;
+    //private UUID playerID = player.getUniqueId();
 
-    private String rpName;
-    private int age;
-    private String race;
-    private String appearance;
-    private String personality;
-    private String background;
-    private String backgroundLink;
+    private String rpName = "test";
+    private int age = 1;
+    private String race = "test";
+    private String appearance = "test";
+    private String personality = "test";
+    private String background = "test";
+    private String backgroundLink = "test";
 
     public CharacterSheet(Player player) {
         this.player = player;
@@ -30,13 +30,9 @@ public class CharacterSheet {
         this.player = player;
     }
 
-    public UUID getPlayerID() {
-        return playerID;
-    }
+    //public UUID getPlayerID() {return playerID;}
 
-    public void setPlayerID(UUID playerID) {
-        this.playerID = playerID;
-    }
+    //public void setPlayerID(UUID playerID) {this.playerID = playerID;}
 
     public String getRpName() {
         return rpName;
@@ -98,7 +94,7 @@ public class CharacterSheet {
 
         player.sendMessage(ChatColor.GOLD + "-===--+++--===-\n");
         player.sendMessage(ChatColor.BLUE + "Name: " + getRpName() + "\nAge: " + getAge() + "\nRace: " + getRace() + "\nAppearance: " + getAppearance() + "\nPersonality: " + getPersonality() + "\nBrief Background: " + getBackground() + "\nIn-Depth Background Link: " + getBackgroundLink());
-        player.sendMessage(ChatColor.GOLD + "\n-===--+++--===-");
+        player.sendMessage(ChatColor.GOLD + "-===--+++--===-");
 
     }
 }

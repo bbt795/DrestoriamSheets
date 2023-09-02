@@ -1,12 +1,14 @@
 package me.billbominecraft.mordsheets.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.billbominecraft.mordsheets.MordSheets;
 import me.billbominecraft.mordsheets.classes.CharacterSheet;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 
 import static me.billbominecraft.mordsheets.MordSheets.tag;
 
@@ -138,7 +140,7 @@ public class CharacterSheetUtil {
 
     public static void saveSheet(CharacterSheet sheet, File file) throws IOException {
 
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
         Writer writer = new FileWriter(file, false);
         gson.toJson(sheet, writer);
         writer.flush();
@@ -151,14 +153,25 @@ public class CharacterSheetUtil {
 
         if(file.exists()){
 
-            Gson gson = new Gson();
+            GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
+            Gson gson = builder.create();
             Reader reader = new FileReader(file);
-            return gson.fromJson(reader, CharacterSheet.class);
+            CharacterSheet sheet = gson.fromJson(reader, CharacterSheet.class);
+
+            return sheet;
 
         }
 
         System.out.println("[MordSheets] No file found on load");
         return null;
+    }
+
+    public static boolean checkRace(){
+
+        //TBD - Coming Soon
+
+        return true;
+
     }
 
 }
