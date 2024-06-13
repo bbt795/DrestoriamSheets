@@ -3,37 +3,39 @@ package me.billbominecraft.mordsheets;
 import me.billbominecraft.mordsheets.commands.CharacterSheetCommand;
 import me.billbominecraft.mordsheets.commands.GlobalRollCommand;
 import me.billbominecraft.mordsheets.commands.RollCommand;
+import me.billbominecraft.mordsheets.events.ConnectionEvents;
+import me.billbominecraft.mordsheets.utils.CharacterSheetUtil;
 import org.bukkit.ChatColor;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MordSheets extends JavaPlugin {
 
-    private static MordSheets plugin;
     public static String tag = ChatColor.BLUE + "[" + ChatColor.GOLD + "MordSheets" + ChatColor.BLUE + "] ";
 
     @Override
     public void onEnable() {
         // Plugin startup logic
 
-        System.out.println("MordSheets is now enabled!");
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
 
-        plugin = this;
+        CharacterSheetUtil sheetUtil = new CharacterSheetUtil(this);
+
+        getServer().getPluginManager().registerEvents(new ConnectionEvents(sheetUtil), this);
 
         getCommand("roll").setExecutor(new RollCommand());
         getCommand("groll").setExecutor(new GlobalRollCommand());
-        getCommand("cs").setExecutor(new CharacterSheetCommand());
+        getCommand("cs").setExecutor(new CharacterSheetCommand(sheetUtil));
+
+        System.out.println("MordSheets is now enabled!");
 
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-    }
 
-    public static Plugin getPlugin() {
-
-        return plugin;
+        System.out.println("MordSheets is now disabled!");
 
     }
 

@@ -1,176 +1,134 @@
 package me.billbominecraft.mordsheets.utils;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import me.billbominecraft.mordsheets.MordSheets;
 import me.billbominecraft.mordsheets.classes.CharacterSheet;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
+import me.billbominecraft.mordsheets.classes.RoleplayStats;
+import me.billbominecraft.mordsheets.classes.Wrapper;
 
 import java.io.*;
-import java.lang.reflect.Modifier;
-
-import static me.billbominecraft.mordsheets.MordSheets.tag;
+import java.util.HashMap;
+import java.util.List;
 
 public class CharacterSheetUtil {
 
-    public static boolean createSheet(Player player) throws IOException {
+    private MordSheets plugin;
+    private HashMap<String, CharacterSheet> sheetHashMap = new HashMap<>();
+    private HashMap<String, RoleplayStats> statMap = new HashMap<>();
 
-        CharacterSheet characterSheet = new CharacterSheet(player);
+    public HashMap<String, CharacterSheet> getSheetHashMap() {return sheetHashMap;}
 
-        File file = new File(MordSheets.getPlugin().getDataFolder().getAbsolutePath() + "/" + player.getUniqueId() + ".json");
+    public HashMap<String, RoleplayStats> getStatMap() {return statMap;}
 
-        if(!file.getParentFile().exists()){
+    public CharacterSheetUtil(MordSheets plugin){
+        this.plugin = plugin;
+    }
 
-            file.getParentFile().mkdir();
+    public void createSheet(String uuid){
+
+        Wrapper wrapper = new Wrapper();
+
+        Gson gson = new Gson();
+        File file = new File(plugin.getDataFolder().getAbsolutePath() + "/"+ uuid + ".json");
+
+        try{
+
+            if(file.createNewFile()){
+
+                Writer writer = new FileWriter(file, false);
+                writer.write(gson.toJson(wrapper));
+                writer.flush();
+                writer.close();
+                loadSheet(uuid);
+                System.out.println("[MordSheets] Created new player file: " + uuid);
+
+            } else {
+
+                System.out.println("[MordSheets] Failed to create character sheet for user: " + uuid);
+
+            }
+
+        } catch (IOException e){
+
+            throw new RuntimeException(e);
 
         }
+
+    }
+
+    public void saveSheet(String uuid){
+
+        File file = new File(plugin.getDataFolder().getAbsolutePath() + "/"+ uuid + ".json");
+        Gson gson = new Gson();
 
         if(file.exists()){
 
-            player.sendMessage(tag + ChatColor.RED + "You already have a character sheet. Please use /cs set.");
-            return false;
+            try{
 
-        }
+                Writer writer = new FileWriter(file, false);
 
-        file.createNewFile();
-        saveSheet(characterSheet, file);
-        player.sendMessage(tag + "Character sheet created. Please do /cs set to add values.");
+                Wrapper wrapper = new Wrapper();
+                wrapper.setCsheet(sheetHashMap.get(uuid));
+                wrapper.setRstats(statMap.get(uuid));
+                writer.write(gson.toJson(wrapper));
+                writer.flush();
+                writer.close();
 
-        return true;
-    }
+            } catch (IOException e){
 
-    public static CharacterSheet findSheet(Player player, Player sender) throws IOException {
-
-        File file = new File(MordSheets.getPlugin().getDataFolder().getAbsolutePath() + "/" + player.getUniqueId() + ".json");
-
-        if(!file.exists()){
-
-            sender.sendMessage(tag + ChatColor.RED + "The player provided does not have a character sheet.");
-            return null;
-
-        }
-
-        return loadSheet(file);
-
-    }
-
-    public static CharacterSheet updateSheet(Player player, String field, String value) throws IOException {
-
-        File file = new File(MordSheets.getPlugin().getDataFolder().getAbsolutePath() + "/" + player.getUniqueId() + ".json");
-
-        if(!file.exists()){
-
-            player.sendMessage(tag + ChatColor.RED + "You do not have a character sheet. Please create one with /cs create.");
-            return null;
-
-        }
-
-        CharacterSheet sheet = loadSheet(file);
-
-        switch (field.toLowerCase()){
-
-            case "name":
-                sheet.setRpName(value);
-                break;
-
-            case "age":
-                sheet.setAge(Integer.parseInt(value));
-                break;
-
-            case "race":
-                sheet.setRace(value);
-                break;
-
-            case "appearance":
-                sheet.setAppearance(value);
-                break;
-
-            case "personality":
-                sheet.setPersonality(value);
-                break;
-
-            case "background":
-                sheet.setBackground(value);
-                break;
-
-            case "link":
-                sheet.setBackgroundLink(value);
-                break;
-
-            default:
-                player.sendMessage(tag + ChatColor.RED + "Please use /cs set (name | age | race | appearance | personality | background | link) (value)");
-                return null;
-        }
-
-        saveSheet(sheet, file);
-
-        player.sendMessage(tag + ChatColor.GOLD + "Sheet has been successfully updated!");
-
-        return sheet;
-
-    }
-
-    /*public static void deleteSheet(UUID id){
-
-        for(CharacterSheet sheet: sheets){
-
-            if(sheet.getPlayerID().equals(id)){
-
-                sheets.remove(sheet);
-                break;
+                throw new RuntimeException(e);
 
             }
 
         }
 
-        try {
-            saveSheets();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
-    public static List<CharacterSheet> findAllSheets(){
+    public void loadSheet(String uuid){
 
-        return sheets;
-
-    }*/
-
-    public static void saveSheet(CharacterSheet sheet, File file) throws IOException {
-
-        Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT).create();
-        Writer writer = new FileWriter(file, false);
-        gson.toJson(sheet, writer);
-        writer.flush();
-        writer.close();
-        System.out.println("[MordSheets] File save complete");
-
-    }
-
-    public static CharacterSheet loadSheet(File file) throws IOException{
+        File file = new File(plugin.getDataFolder().getAbsolutePath() + "/"+ uuid + ".json");
 
         if(file.exists()){
 
-            GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
-            Gson gson = builder.create();
-            Reader reader = new FileReader(file);
-            CharacterSheet sheet = gson.fromJson(reader, CharacterSheet.class);
+            Gson gson = new Gson();
 
-            return sheet;
+            try{
+
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                Wrapper wrapper = gson.fromJson(reader, Wrapper.class);
+                sheetHashMap.putIfAbsent(uuid, wrapper.getCsheet());
+                statMap.putIfAbsent(uuid, wrapper.getRstats());
+
+            } catch (FileNotFoundException e){
+
+                throw new RuntimeException(e);
+
+            }
+
+        } else {
+
+            createSheet(uuid);
 
         }
 
-        System.out.println("[MordSheets] No file found on load");
-        return null;
     }
 
-    public static boolean checkRace(){
+    public boolean checkRace(String arg){
 
-        //TBD - Coming Soon
+        List<String> raceList = plugin.getConfig().getStringList("races");
+        System.out.println(raceList);
 
-        return true;
+        for(String race : raceList){
+
+            if(arg.equalsIgnoreCase(race)){
+
+                return true;
+
+            }
+
+        }
+
+        return false;
 
     }
 

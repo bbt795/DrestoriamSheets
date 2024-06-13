@@ -3,36 +3,27 @@ package me.billbominecraft.mordsheets.classes;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import java.util.UUID;
-
 public class CharacterSheet {
 
-    private transient Player player;
-    //private UUID playerID = player.getUniqueId();
+    private String rpName;
+    private int age;
+    private String race;
+    private String appearance;
+    private String personality;
+    private String background;
+    private String backgroundLink;
 
-    private String rpName = "test";
-    private int age = 1;
-    private String race = "test";
-    private String appearance = "test";
-    private String personality = "test";
-    private String background = "test";
-    private String backgroundLink = "test";
+    public CharacterSheet() {
 
-    public CharacterSheet(Player player) {
-        this.player = player;
+        rpName = "default";
+        age = 1;
+        race = "default";
+        appearance = "default";
+        personality = "default";
+        background = "default";
+        backgroundLink = "default";
+
     }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    //public UUID getPlayerID() {return playerID;}
-
-    //public void setPlayerID(UUID playerID) {this.playerID = playerID;}
 
     public String getRpName() {
         return rpName;
