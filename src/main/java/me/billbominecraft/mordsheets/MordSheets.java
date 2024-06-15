@@ -2,6 +2,7 @@ package me.billbominecraft.mordsheets;
 
 import me.billbominecraft.mordsheets.commands.CharacterSheetCommand;
 import me.billbominecraft.mordsheets.commands.GlobalRollCommand;
+import me.billbominecraft.mordsheets.commands.RoleplayStatsCommand;
 import me.billbominecraft.mordsheets.commands.RollCommand;
 import me.billbominecraft.mordsheets.events.ConnectionEvents;
 import me.billbominecraft.mordsheets.utils.CharacterSheetUtil;
@@ -26,6 +27,7 @@ public final class MordSheets extends JavaPlugin {
         getCommand("roll").setExecutor(new RollCommand());
         getCommand("groll").setExecutor(new GlobalRollCommand());
         getCommand("cs").setExecutor(new CharacterSheetCommand(sheetUtil));
+        getCommand("rs").setExecutor(new RoleplayStatsCommand(sheetUtil));
 
         System.out.println("MordSheets is now enabled!");
 

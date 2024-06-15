@@ -1,5 +1,8 @@
 package me.billbominecraft.mordsheets.classes;
 
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
 public class RoleplayStats {
 
     private int acrobatics;
@@ -141,5 +144,39 @@ public class RoleplayStats {
     public int getInnuendo() {return innuendo;}
 
     public void setInnuendo(int innuendo) {this.innuendo = innuendo;}
+
+    public void printStats(Player player){
+
+        int dexterity = getAcrobatics() + getStealth() + getSleight() + getContortion();
+        int strength = getEmotional() + getAthletics() + getBrawn() + getResistance();
+        int charisma = getDeception() + getIntimidation() + getPersuasion() + getPerformance();
+        int intelligence = getInvestigation() + getNature() + getReligion() + getPerception() + getMedicine();
+        int wisdom = getHandling() + getInsight() + getSurvival() + getInnuendo();
+
+        player.sendMessage(ChatColor.BLUE + "-===--+++--===-\n");
+
+        player.sendMessage(ChatColor.GOLD + "\nDexterity - " + dexterity + "\n");
+
+        player.sendMessage(ChatColor.BLUE + "\nAcrobatics: " + getAcrobatics() + "\nStealth: " + getStealth() + "\nSleight of Hand: " + getSleight() + "\nContortion: " + getContortion() + "\n");
+
+        player.sendMessage(ChatColor.GOLD + "\nStrength - " + strength + "\n");
+
+        player.sendMessage(ChatColor.BLUE + "\nEmotional: " + getEmotional() + "\nAthletics: " + getAthletics() + "\nBrawn: " + getBrawn() + "\nResistance: " + getResistance() + "\n");
+
+        player.sendMessage(ChatColor.GOLD + "\nCharisma - " + charisma + "\n");
+
+        player.sendMessage(ChatColor.BLUE + "\nDeception: " + getDeception() + "\nIntimidation: " + getIntimidation() + "\nPersuasion: " + getPersuasion() + "\nPerformance: " + getPerformance() + "\n");
+
+        player.sendMessage(ChatColor.GOLD + "\nIntelligence - " + intelligence + "\n");
+
+        player.sendMessage(ChatColor.BLUE + "\nInvestigation: " + getInvestigation() + "\nNature: " + getNature() + "\nReligion: " + getReligion() + "\nPerception: " + getPerception() + "\nMedicine: " + getMedicine() + "\n");
+
+        player.sendMessage(ChatColor.GOLD + "\nWisdom - " + wisdom + "\n");
+
+        player.sendMessage(ChatColor.BLUE + "\nAnimal Handling: " + getHandling() + "\nInsight: " + getInsight() + "\nSurvival: " + getSurvival() + "\nInnuendo: " + getInnuendo() + "\n");
+
+        player.sendMessage(ChatColor.GOLD + "-===--+++--===-");
+
+    }
 
 }

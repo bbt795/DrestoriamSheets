@@ -9,8 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Locale;
-
 import static me.billbominecraft.mordsheets.MordSheets.tag;
 
 public class CharacterSheetCommand implements CommandExecutor {
@@ -177,7 +175,7 @@ public class CharacterSheetCommand implements CommandExecutor {
         return true;
     }
 
-    public void printHelp(Player player){
+    private void printHelp(Player player){
 
         player.sendMessage(ChatColor.GOLD + "-===--+ MordSheets Help +--===-");
         player.sendMessage(ChatColor.BLUE + "- /cs help");
