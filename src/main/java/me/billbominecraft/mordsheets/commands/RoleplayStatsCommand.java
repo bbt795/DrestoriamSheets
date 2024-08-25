@@ -3,15 +3,11 @@ package me.billbominecraft.mordsheets.commands;
 import me.billbominecraft.mordsheets.classes.RoleplayStats;
 import me.billbominecraft.mordsheets.utils.CharacterSheetUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static me.billbominecraft.mordsheets.MordSheets.tag;
 
@@ -43,6 +39,13 @@ public class RoleplayStatsCommand implements CommandExecutor {
             switch(args[0].toLowerCase()){
 
                 case "add":{
+
+                    if(!player.hasPermission("rs.add")){
+
+                        player.sendMessage(tag + ChatColor.RED + "You do not have permission to execute this command.");
+                        break;
+
+                    }
 
                     if(args.length != 4){
 
@@ -82,9 +85,17 @@ public class RoleplayStatsCommand implements CommandExecutor {
 
                     }
 
+                    player.sendMessage(tag + ChatColor.GREEN + "Successfully added!");
                     break;}
 
                 case "remove":{
+
+                    if(!player.hasPermission("rs.remove")){
+
+                        player.sendMessage(tag + ChatColor.RED + "You do not have permission to execute this command.");
+                        break;
+
+                    }
 
                     if(args.length != 4){
 
@@ -125,12 +136,19 @@ public class RoleplayStatsCommand implements CommandExecutor {
 
                     }
 
-
+                    player.sendMessage(tag + ChatColor.GREEN + "Successfully removed!");
                     break;}
 
                 case "check":
 
                     if(args.length == 2){
+
+                        if(!player.hasPermission("rs.check.others")){
+
+                            player.sendMessage(tag + ChatColor.RED + "You do not have permission to execute this command.");
+                            break;
+
+                        }
 
                         Player target = Bukkit.getPlayerExact(args[1]);
 

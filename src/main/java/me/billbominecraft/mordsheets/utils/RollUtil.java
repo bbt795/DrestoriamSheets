@@ -18,13 +18,13 @@ public class RollUtil {
             case 5:
             case 6:
             case 7:
-            case 8:
+            case 8: //an
                 result = "Major Penalty";
                 break;
 
             case 9:
             case 10:
-            case 11:
+            case 11: //an
             case 12:
                 result = "Minor Penalty";
                 break;
@@ -37,7 +37,7 @@ public class RollUtil {
                 break;
 
             case 17:
-            case 18:
+            case 18: //an
             case 19:
             case 20:
                 result = "No Penalty";

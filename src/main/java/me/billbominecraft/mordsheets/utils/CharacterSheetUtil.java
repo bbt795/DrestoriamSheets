@@ -116,7 +116,6 @@ public class CharacterSheetUtil {
     public boolean checkRace(String arg){
 
         List<String> raceList = plugin.getConfig().getStringList("races");
-        System.out.println(raceList);
 
         for(String race : raceList){
 

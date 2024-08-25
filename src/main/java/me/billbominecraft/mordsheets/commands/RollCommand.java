@@ -1,6 +1,6 @@
 package me.billbominecraft.mordsheets.commands;
 
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,13 +28,29 @@ public class RollCommand implements CommandExecutor {
 
             if(args.length == 0){
 
-                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+                if(diceroll == 8 || diceroll == 11 || diceroll == 18){
+
+                    player.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled an " + diceroll + " (" + resultMessage(diceroll) + ")");
+
+                }else{
+
+                    player.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+
+                }
 
                 for(Entity entity: entities){
 
                     if(entity instanceof Player){
 
-                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")!");
+                        if(diceroll == 8 || diceroll == 11 || diceroll == 18){
+
+                            entity.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled an " + diceroll + " (" + resultMessage(diceroll) + ")");
+
+                        }else{
+
+                            entity.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+
+                        }
 
                     }
 
@@ -45,14 +61,29 @@ public class RollCommand implements CommandExecutor {
                 int bonus = Integer.parseInt(args[0]);
                 int total = diceroll + bonus;
 
+                if(diceroll == 8 || diceroll == 11 || diceroll == 18){
 
-                player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                    player.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled an " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+
+                }else{
+
+                    player.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+
+                }
 
                 for(Entity entity: entities){
 
                     if(entity instanceof Player){
 
-                        entity.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+                        if(diceroll == 8 || diceroll == 11 || diceroll == 18){
+
+                            entity.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled an " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+
+                        }else{
+
+                            entity.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+
+                        }
 
                     }
 

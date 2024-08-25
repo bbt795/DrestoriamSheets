@@ -1,7 +1,7 @@
 name: MordSheets
 version: '${project.version}'
 main: me.billbominecraft.mordsheets.MordSheets
-api-version: 1.19
+api-version: 1.21.1
 authors: [ billbominecraft ]
 description: Minecraft character sheets
 
@@ -14,9 +14,9 @@ commands:
     description: Globally roll a random number 1 to 20
     usage: /groll [#]
 
-  cs:
+  csheet:
     description: View/edit character sheets
-    usage: /cs
+    usage: /csheet
 
   rs:
     description: View/edit roleplay stats

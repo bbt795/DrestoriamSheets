@@ -1,7 +1,7 @@
 package me.billbominecraft.mordsheets.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,13 +28,19 @@ public class GlobalRollCommand implements CommandExecutor {
 
             if(args.length == 0){
 
-                //player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
-
                 for(Player onlinePlayers: players){
 
                     if(onlinePlayers != null){
 
-                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+                        if(diceroll == 8 || diceroll == 11 || diceroll == 18){
+
+                            onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled an " + diceroll + " (" + resultMessage(diceroll) + ")");
+
+                        }else{
+
+                            onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled a " + diceroll + " (" + resultMessage(diceroll) + ")");
+
+                        }
 
                     }
 
@@ -45,20 +51,24 @@ public class GlobalRollCommand implements CommandExecutor {
                 int bonus = Integer.parseInt(args[0]);
                 int total = diceroll + bonus;
 
-
-                //player.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")");
-
                 for(Player onlinePlayers: players){
 
                     if(onlinePlayers != null){
 
-                        onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getDisplayName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")");
+                        if(diceroll == 8 || diceroll == 11 || diceroll == 18){
+
+                            onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled an " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+
+                        }else{
+
+                            onlinePlayers.sendMessage(tag + ChatColor.GOLD + player.getName() + " has rolled a " + diceroll + " + " + bonus + " = " + total + " (" + resultMessage(total) + ")!");
+
+                        }
 
                     }
 
                 }
 
-                //check if args is an integer
             } else {
 
                 player.sendMessage(tag + ChatColor.RED + "Please enter valid arguments. /roll [#]");
