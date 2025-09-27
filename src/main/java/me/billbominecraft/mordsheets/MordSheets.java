@@ -29,15 +29,12 @@ public final class MordSheets extends JavaPlugin {
         getCommand("csheet").setExecutor(new CharacterSheetCommand(sheetUtil));
         getCommand("rs").setExecutor(new RoleplayStatsCommand(sheetUtil));
 
-        System.out.println("MordSheets is now enabled!");
-
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
 
-        System.out.println("MordSheets is now disabled!");
 
     }
 
