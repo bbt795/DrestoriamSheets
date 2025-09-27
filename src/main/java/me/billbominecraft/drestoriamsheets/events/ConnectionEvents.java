@@ -1,6 +1,6 @@
-package me.billbominecraft.mordsheets.events;
+package me.billbominecraft.drestoriamsheets.events;
 
-import me.billbominecraft.mordsheets.utils.CharacterSheetUtil;
+import me.billbominecraft.drestoriamsheets.utils.CharacterSheetUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

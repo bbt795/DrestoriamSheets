@@ -1,4 +1,4 @@
-package me.billbominecraft.mordsheets.commands;
+package me.billbominecraft.drestoriamsheets.commands;
 
 import org.bukkit.Bukkit;
 import net.md_5.bungee.api.ChatColor;
@@ -10,8 +10,8 @@ import org.bukkit.entity.Player;
 import java.util.List;
 import java.util.Random;
 
-import static me.billbominecraft.mordsheets.MordSheets.tag;
-import static me.billbominecraft.mordsheets.utils.RollUtil.resultMessage;
+import static me.billbominecraft.drestoriamsheets.DrestoriamSheets.tag;
+import static me.billbominecraft.drestoriamsheets.utils.RollUtil.resultMessage;
 
 public class GlobalRollCommand implements CommandExecutor {
 

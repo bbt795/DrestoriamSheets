@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.billbominecraft</groupId>
-    <artifactId>MordSheets</artifactId>
+    <artifactId>DrestoriamSheets</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>MordSheets</name>
+    <name>DrestoriamSheets</name>
 
     <description>Minecraft character sheets</description>
     <properties>

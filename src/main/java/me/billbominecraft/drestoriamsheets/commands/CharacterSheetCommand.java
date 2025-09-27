@@ -1,7 +1,7 @@
-package me.billbominecraft.mordsheets.commands;
+package me.billbominecraft.drestoriamsheets.commands;
 
-import me.billbominecraft.mordsheets.classes.CharacterSheet;
-import me.billbominecraft.mordsheets.utils.CharacterSheetUtil;
+import me.billbominecraft.drestoriamsheets.classes.CharacterSheet;
+import me.billbominecraft.drestoriamsheets.utils.CharacterSheetUtil;
 import org.bukkit.Bukkit;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static me.billbominecraft.mordsheets.MordSheets.tag;
+import static me.billbominecraft.drestoriamsheets.DrestoriamSheets.tag;
 
 public class CharacterSheetCommand implements CommandExecutor {
 

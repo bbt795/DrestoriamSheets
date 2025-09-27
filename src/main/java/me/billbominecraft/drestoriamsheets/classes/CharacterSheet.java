@@ -1,4 +1,4 @@
-package me.billbominecraft.mordsheets.classes;
+package me.billbominecraft.drestoriamsheets.classes;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Player;

@@ -1,17 +1,17 @@
-package me.billbominecraft.mordsheets;
+package me.billbominecraft.drestoriamsheets;
 
-import me.billbominecraft.mordsheets.commands.CharacterSheetCommand;
-import me.billbominecraft.mordsheets.commands.GlobalRollCommand;
-import me.billbominecraft.mordsheets.commands.RoleplayStatsCommand;
-import me.billbominecraft.mordsheets.commands.RollCommand;
-import me.billbominecraft.mordsheets.events.ConnectionEvents;
-import me.billbominecraft.mordsheets.utils.CharacterSheetUtil;
+import me.billbominecraft.drestoriamsheets.commands.CharacterSheetCommand;
+import me.billbominecraft.drestoriamsheets.commands.GlobalRollCommand;
+import me.billbominecraft.drestoriamsheets.commands.RoleplayStatsCommand;
+import me.billbominecraft.drestoriamsheets.commands.RollCommand;
+import me.billbominecraft.drestoriamsheets.events.ConnectionEvents;
+import me.billbominecraft.drestoriamsheets.utils.CharacterSheetUtil;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class MordSheets extends JavaPlugin {
+public final class DrestoriamSheets extends JavaPlugin {
 
-    public static String tag = ChatColor.BLUE + "[" + ChatColor.GOLD + "MordSheets" + ChatColor.BLUE + "] ";
+    public static String tag = ChatColor.BLUE + "[" + ChatColor.GOLD + "DrestoriamSheets" + ChatColor.BLUE + "] ";
 
     @Override
     public void onEnable() {

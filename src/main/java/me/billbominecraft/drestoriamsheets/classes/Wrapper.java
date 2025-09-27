@@ -1,4 +1,4 @@
-package me.billbominecraft.mordsheets.classes;
+package me.billbominecraft.drestoriamsheets.classes;
 
 public class Wrapper {
 

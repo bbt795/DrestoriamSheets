@@ -1,10 +1,10 @@
-package me.billbominecraft.mordsheets.utils;
+package me.billbominecraft.drestoriamsheets.utils;
 
 import com.google.gson.Gson;
-import me.billbominecraft.mordsheets.MordSheets;
-import me.billbominecraft.mordsheets.classes.CharacterSheet;
-import me.billbominecraft.mordsheets.classes.RoleplayStats;
-import me.billbominecraft.mordsheets.classes.Wrapper;
+import me.billbominecraft.drestoriamsheets.DrestoriamSheets;
+import me.billbominecraft.drestoriamsheets.classes.CharacterSheet;
+import me.billbominecraft.drestoriamsheets.classes.RoleplayStats;
+import me.billbominecraft.drestoriamsheets.classes.Wrapper;
 
 import java.io.*;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CharacterSheetUtil {
 
-    private MordSheets plugin;
+    private DrestoriamSheets plugin;
     private HashMap<String, CharacterSheet> sheetHashMap = new HashMap<>();
     private HashMap<String, RoleplayStats> statMap = new HashMap<>();
 
@@ -20,7 +20,7 @@ public class CharacterSheetUtil {
 
     public HashMap<String, RoleplayStats> getStatMap() {return statMap;}
 
-    public CharacterSheetUtil(MordSheets plugin){
+    public CharacterSheetUtil(DrestoriamSheets plugin){
         this.plugin = plugin;
     }
 

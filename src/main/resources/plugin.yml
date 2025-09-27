@@ -1,6 +1,6 @@
-name: MordSheets
+name: DrestoriamSheets
 version: '${project.version}'
-main: me.billbominecraft.mordsheets.MordSheets
+main: me.billbominecraft.drestoriamsheets.DrestoriamSheets
 api-version: 1.21.1
 authors: [ billbominecraft ]
 description: Minecraft character sheets
