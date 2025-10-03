@@ -178,11 +178,11 @@ public class CharacterSheetCommand implements CommandExecutor {
     private void printHelp(Player player){
 
         player.sendMessage(ChatColor.GOLD + "-===--+ MordSheets Help +--===-");
-        player.sendMessage(ChatColor.BLUE + "- /cs help");
-        player.sendMessage(ChatColor.BLUE + "- /cs inspect (username)");
-        player.sendMessage(ChatColor.BLUE + "- /cs me");
-        player.sendMessage(ChatColor.BLUE + "- /cs create");
-        player.sendMessage(ChatColor.BLUE + "- /cs set (name | age | race | appearance | personality | background | link) (value)");
+        player.sendMessage(ChatColor.BLUE + "- /csheet help");
+        player.sendMessage(ChatColor.BLUE + "- /csheet inspect (username)");
+        player.sendMessage(ChatColor.BLUE + "- /csheet me");
+        player.sendMessage(ChatColor.BLUE + "- /csheet create");
+        player.sendMessage(ChatColor.BLUE + "- /csheet set (name | age | race | appearance | personality | background | link) (value)");
         player.sendMessage(ChatColor.GOLD + "-===--+++++++++++++++++--===-");
 
     }

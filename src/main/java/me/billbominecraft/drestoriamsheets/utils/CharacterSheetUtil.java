@@ -40,11 +40,11 @@ public class CharacterSheetUtil {
                 writer.flush();
                 writer.close();
                 loadSheet(uuid);
-                System.out.println("[MordSheets] Created new player file: " + uuid);
+                System.out.println("[DrestoriamSheets] Created new player file: " + uuid);
 
             } else {
 
-                System.out.println("[MordSheets] Failed to create character sheet for user: " + uuid);
+                System.out.println("[DrestoriamSheets] Failed to create character sheet for user: " + uuid);
 
             }
 

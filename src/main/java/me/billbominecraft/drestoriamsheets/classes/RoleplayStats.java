@@ -175,7 +175,7 @@ public class RoleplayStats {
 
         player.sendMessage(ChatColor.BLUE + "\nAnimal Handling: " + getHandling() + "\nInsight: " + getInsight() + "\nSurvival: " + getSurvival() + "\nInnuendo: " + getInnuendo() + "\n");
 
-        player.sendMessage(ChatColor.GOLD + "-===--+++--===-");
+        player.sendMessage(ChatColor.BLUE + "-===--+++--===-");
 
     }
 

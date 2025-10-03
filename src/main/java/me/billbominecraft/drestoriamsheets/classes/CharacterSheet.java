@@ -1,6 +1,10 @@
 package me.billbominecraft.drestoriamsheets.classes;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 
 public class CharacterSheet {
@@ -84,7 +88,14 @@ public class CharacterSheet {
     public void printSheet(Player player){
 
         player.sendMessage(ChatColor.GOLD + "-===--+++--===-\n");
-        player.sendMessage(ChatColor.BLUE + "Name: " + getRpName() + "\nAge: " + getAge() + "\nRace: " + getRace() + "\nAppearance: " + getAppearance() + "\nPersonality: " + getPersonality() + "\nBrief Background: " + getBackground() + "\nIn-Depth Background Link: " + getBackgroundLink());
+        player.sendMessage(ChatColor.BLUE + "Name: " + getRpName() + "\nAge: " + getAge() + "\nRace: " + getRace() + "\nAppearance: " + getAppearance() + "\nPersonality: " + getPersonality() + "\nBrief Background: " + getBackground() + "\nIn-Depth Background Link: ");
+
+        TextComponent backgroundLinkText = new TextComponent(getBackgroundLink());
+        backgroundLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, getBackgroundLink()));
+        backgroundLinkText.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to Visit!").create()));
+        backgroundLinkText.setColor(ChatColor.BLUE);
+        player.spigot().sendMessage(backgroundLinkText);
+
         player.sendMessage(ChatColor.GOLD + "-===--+++--===-");
 
     }
